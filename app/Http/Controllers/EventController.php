@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Client;
 use App\Service;
+use App\Prepaid;
 use App\TemporaryEvent;
 use App\EventService;
 use App\TemporaryEventService;
@@ -64,7 +65,6 @@ class EventController extends Controller
 
     public function eventservice(Request $request)
     {
-        //dd($request);
         DB::table('temporary_events')->delete();
         DB::table('temporary_event_services')->delete();
         $status = 0;// 0 = terminado, 1=ejecucion, 2=pendiente
@@ -80,7 +80,8 @@ class EventController extends Controller
 
         $services = Service::select('*')->get();
         //dd($temporary_event);
-        return view('event.event_service')->with('data', $temporary_event)->with('services', $services);
+        return view('event.event_service')->with('data', $temporary_event)->with('services', $services)
+            ->with('prepaid', $request);
     }
 
     public function showTableESC(Request $request)
@@ -145,6 +146,19 @@ class EventController extends Controller
         //Borramos temporales
         DB::table('temporary_events')->delete();
         DB::table('temporary_event_services')->delete();
+
+        //Guardamos el anticipo
+        //0=anticipado, 1=pendiente
+        //$prepaid = (new Prepaid)->fill($request->all());
+        $prepaid = new Prepaid;
+        $prepaid->date = $request->prepaid_date;
+        $prepaid->total = $request->prepaid_total;
+        if($event->status == 2)
+            $prepaid->status = 1;
+        else
+            $prepaid->status = 0;
+        $prepaid->event_id = $event->id;
+        $prepaid->save();
 
         $msg = [
               'title' => 'Capturado correctamente!',

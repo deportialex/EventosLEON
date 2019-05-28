@@ -117,7 +117,7 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        dd($service);
+        //dd($service);
         Service::destroy($service->id);
         $msg = [
             'title' => 'Eliminado!',

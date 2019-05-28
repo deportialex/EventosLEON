@@ -55,4 +55,4 @@ Route::delete('deleteServiceTemporal','EventController@deleteServiceTemporal')->
 
 //Preapids
 Route::resource('prepaid','PrepaidController');
-Route::get('showTable','PrepaidController@showTable')->name('prepaid.showTable');
+Route::get('showTablePre','PrepaidController@showTablePre')->name('prepaid.showTablePre');

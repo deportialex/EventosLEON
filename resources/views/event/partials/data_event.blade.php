@@ -8,3 +8,5 @@
 <input type="hidden" name="discount" id="discount" value="{{$data->discount}}">
 <input type="hidden" name="status" id="status" value="{{$data->status}}">
 <input type="hidden" name="people" id="people" value="{{$data->people}}">
+<input type="hidden" name="prepaid_total" id="prepaid_total" value="{{$prepaid->amount}}">
+<input type="hidden" name="prepaid_date" id="prepaid_date" value="{{$prepaid->date}}">
