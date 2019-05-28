@@ -1,0 +1,10 @@
+<input type="hidden" name="temporary_event_id" id="temporary_event_id" value="{{$data->id}}">
+<input type="hidden" name="client_id" id="client_id" value="{{$data->client_id}}">
+<input type="hidden" name="user" id="user" value="{{$data->user}}">
+<input type="hidden" name="additional_hour" id="additional_hour" value="{{$data->additional_hour}}">
+<input type="hidden" name="additional_people" id="additional_people" value="{{$data->additional_people}}">
+<input type="hidden" name="date_start" id="date_start" value="{{$data->date_start}}">
+<input type="hidden" name="date_end" id="date_end" value="{{$data->date_end}}">
+<input type="hidden" name="discount" id="discount" value="{{$data->discount}}">
+<input type="hidden" name="status" id="status" value="{{$data->status}}">
+<input type="hidden" name="people" id="people" value="{{$data->people}}">
